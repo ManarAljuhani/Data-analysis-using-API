@@ -3,13 +3,16 @@ from flask import jsonify
 import pandas as pd
 import numpy as np
 np.random.seed(0)
-data = pd.read_csv("/home/ubuntu/IMDB Dataset (1).csv")
+
 payload = {'label_name': "positive", 'count': 15}
 payload1 = {'sort':'ASC', 'count1': 20}
 result =requests.get("http://0.0.0.0:3000/get_data_count", payload, headers= {"Content-Type": "application/json"})
 result2 =requests.get("http://0.0.0.0:3000/get_data", payload1, headers= {"Content-Type": "application/json"})
 print(result.json())
 print(result2.json())
+
+#يداية التحليل
+data = pd.read_csv("/home/ubuntu/IMDB Dataset (1).csv")
 data['TEXT']=data['review']
 data =  data.drop(['review'], axis=1)
 data['sentiment'][data['sentiment'] == 'positive'] = 1
