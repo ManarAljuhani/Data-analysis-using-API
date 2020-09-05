@@ -25,13 +25,12 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db = SQLAlchemy(app)
 
 #default route to 127.0.0.1:3000
-@app.route('/', methods=['POST'])
+@app.route('/api', methods=['GET'])
 def predict():
    data = request.get_json(force=True)
    prediction = model.predict([[np.array(data['exp'])]])
-   output = prediction[0]
-   return jsonify(output)
-@app.route('/get_data_count', methods=['GET'])
+   r = prediction[0]
+   @app.route('/get_data_count', methods=['GET'])
 
 def get_data_count():
    print("get_data_count called")
