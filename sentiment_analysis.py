@@ -33,19 +33,12 @@ def clean_text(text):
     text = re.sub("[^a-z\' ]", ' ', text)
     text = re.sub(' +', ' ', text)
     return text
-
+pred=[]
 for i in myStrList:
     example_test = (i)
     cleaned_test = clean_text(example_test)
     cleaned_test_vector = vectorizer.transform([cleaned_test])
     text_result = model.predict(cleaned_test_vector)
-  
-
-
-pred=[]
-for i in myStrList: 
-    vector = vectorizer.transform([i])
-    text_result = model.predict(vector)
     pred.append(text_result[0]) 
 
 from sklearn.metrics import accuracy_score
