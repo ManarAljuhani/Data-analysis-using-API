@@ -51,7 +51,6 @@ for i in myStrList:
 from sklearn.metrics import accuracy_score
 pred[:]
 myIntList[:]
-accuracy_score(pred,myIntList)
 print(" نسبة الصحة :")
 print(accuracy_score(pred,myIntList))
 
